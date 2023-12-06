@@ -8,14 +8,12 @@ import Button from '@/components/button/button';
 import Input from '@/components/input/input';
 import Tag from '@/components/tag/tag';
 import VStack from "@/components/ui/v-stack/v-stack";
-import { TUserInfo } from '@/types/types';
-import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import "./profile-edit.css";
 
-export default function ProfileEdit(data: TUserInfo) {
-  const [profile, setProfile] = useState<TUserInfo>({
+export default function ProfileEdit(data: any) {
+  const [profile, setProfile] = useState<any>({
     userName: "",
     emailAddress: "",
     firstName: "",
@@ -54,7 +52,7 @@ export default function ProfileEdit(data: TUserInfo) {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setProfile((prevProfile) => ({
+    setProfile((prevProfile: any) => ({
       ...prevProfile!,
       [name]: value,
     }));
@@ -86,7 +84,7 @@ export default function ProfileEdit(data: TUserInfo) {
       website,
       role,
     } = profile;
-    const update: TUserInfo = {
+    const update = {
       bio,
       company,
       role,
