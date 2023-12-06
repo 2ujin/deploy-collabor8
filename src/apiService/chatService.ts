@@ -1,22 +1,22 @@
-const baseUrl = 'http://localhost:3001';
+import { BASE_URL } from "@/constants/api";
 
 export const startChat = async (chatInfo: {
   chatName: string;
   users: string[];
   message: string;
 }) => {
-  const token = localStorage.getItem('accessToken');
+  const token = localStorage.getItem("accessToken");
   try {
-    const response = await fetch(`${baseUrl}/chat/start`, {
-      method: 'POST',
+    const response = await fetch(`${BASE_URL}/chat/start`, {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(chatInfo),
     });
     const responseData = await response.json();
-    console.log('responseData: ', responseData);
+    console.log("responseData: ", responseData);
     if (!response.ok) {
       throw new Error(responseData.errorMsg);
     }
@@ -27,13 +27,13 @@ export const startChat = async (chatInfo: {
 };
 
 export const getChats = async () => {
-  const token = localStorage.getItem('accessToken');
+  const token = localStorage.getItem("accessToken");
   try {
-    const chats = await fetch(`${baseUrl}/chat/get`, {
-      method: 'GET',
-      mode: 'cors',
+    const chats = await fetch(`${BASE_URL}/chat/get`, {
+      method: "GET",
+      mode: "cors",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -42,7 +42,7 @@ export const getChats = async () => {
       const response = await chats.json();
       return { status: 200, data: response };
     } else {
-      return { status: 400, error: 'Error getting chats' };
+      return { status: 400, error: "Error getting chats" };
     }
   } catch (error) {
     console.error(error);
@@ -50,13 +50,13 @@ export const getChats = async () => {
 };
 
 export const getChatMessages = async (chatId: string) => {
-  const token = localStorage.getItem('accessToken');
+  const token = localStorage.getItem("accessToken");
   try {
-    const messages = await fetch(`${baseUrl}/chat/get/${chatId}`, {
-      method: 'GET',
-      mode: 'cors',
+    const messages = await fetch(`${BASE_URL}/chat/get/${chatId}`, {
+      method: "GET",
+      mode: "cors",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -65,7 +65,7 @@ export const getChatMessages = async (chatId: string) => {
       const response = await messages.json();
       return { status: 200, data: response };
     } else {
-      return { status: 400, error: 'Error getting messages' };
+      return { status: 400, error: "Error getting messages" };
     }
   } catch (error) {
     console.error(error);

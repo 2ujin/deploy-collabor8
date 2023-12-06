@@ -1,4 +1,4 @@
-import type { JwtPayload } from "jwt-decode";
+import type { JwtPayload } from 'jwt-decode';
 
 export type TLoginDetails = {
   emailAddress: string;
@@ -44,7 +44,7 @@ export type TUserState = {
   isLogged: boolean;
   userId: string | null;
   user: null | TUserInfo;
-  status: "idle" | "loading" | "succeeded" | "failed";
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null | undefined;
 };
 
