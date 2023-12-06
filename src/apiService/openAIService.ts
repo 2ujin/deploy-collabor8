@@ -2,7 +2,6 @@ import { BASE_URL } from "@/constants/api";
 
 export const generateRoles = async (projectId: { projectId: string }) => {
   const token = localStorage.getItem("accessToken");
-  console.log("prompt: ", prompt);
   try {
     const response = await fetch(`${BASE_URL}/ai/roles`, {
       method: "POST",
